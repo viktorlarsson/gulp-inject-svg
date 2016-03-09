@@ -28,6 +28,7 @@ module.exports = function(filePath) {
 
     function injectSvg(dom) {
 
+        // Regexp for checking if the file ending has .svg
         var testSvg = /(?!.*[.](?:svg)$).*/;
 
         dom('img').each(function(idx, el) {
@@ -37,8 +38,19 @@ module.exports = function(filePath) {
             if (testSvg.test(src) && isLocal(src)) {
                 var dir = path.dirname(src);
 
-                var inlineSvg = fs.readFileSync("." + src).toString();
-                el.replaceWith(inlineSvg)
+                var inlineTag;
+
+                try {
+
+                  inlineTag = fs.readFileSync("." + src).toString();
+
+                } catch (e) {
+
+                  inlineTag = "<!-- File "+ src + " was not found by gulp-inject-svg  -->";
+
+                }
+
+                el.replaceWith(inlineTag)
             }
         })
     }
