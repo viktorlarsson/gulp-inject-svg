@@ -1,21 +1,21 @@
 {
-    "name": "gulp-inject-svg",
-    "version": "0.1.0",
-    "description": "replaces external svg with inline svg",
-    "main": "index.js",
-    "author": "Viktor Sarström",
-    "license": "BSD",
-    "dependencies": {
-        "cheerio": "latest",
-        "event-stream": "latest",
-        "iconv-lite": "latest"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/viktorlarsson/gulp-inject-svg"
-    },
-    "bugs": {
-        "url": "https://github.com/viktorlarsson/gulp-inject-svg/issues"
-    },
-    "homepage": "https://github.com/viktorlarsson/gulp-inject-svg"
+  "name": "gulp-inject-svg",
+  "version": "0.1.1",
+  "description": "replaces external svg with inline svg",
+  "main": "index.js",
+  "author": "Viktor Sarström",
+  "license": "BSD",
+  "dependencies": {
+    "cheerio": "latest",
+    "event-stream": "latest",
+    "iconv-lite": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/viktorlarsson/gulp-inject-svg"
+  },
+  "bugs": {
+    "url": "https://github.com/viktorlarsson/gulp-inject-svg/issues"
+  },
+  "homepage": "https://github.com/viktorlarsson/gulp-inject-svg"
 }
