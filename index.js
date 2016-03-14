@@ -36,21 +36,29 @@ module.exports = function(filePath) {
             var src = el.attr('src');
 
             if (testSvg.test(src) && isLocal(src)) {
+
                 var dir = path.dirname(src);
 
-                var inlineTag;
+                var svg;
 
                 try {
 
-                  inlineTag = fs.readFileSync("." + src).toString();
+                  var inlineTag = fs.readFileSync("." + src).toString();
+                  var className = el.attr('class');
+
+                  svg = dom(inlineTag);
+
+                  if(className !== undefined) {
+                    svg.addClass(className);
+                  }
 
                 } catch (e) {
 
-                  inlineTag = "<!-- File "+ src + " was not found by gulp-inject-svg  -->";
+                  svg = "<!-- File "+ src + " was not found by gulp-inject-svg  -->";
 
                 }
 
-                el.replaceWith(inlineTag)
+                el.replaceWith(svg)
             }
         })
     }
