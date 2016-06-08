@@ -7,9 +7,11 @@ This gulp plugin will check all img tags with an external svg and replace the ta
 
 ## Usage
 
+NOTE: You currently need to use an absolute path to your svg
+
 ```html
 <div class="icon">
-  <img src="/assets/img/icons/exclamation_mark.svg" class="icon--exclamation-mark">
+  <img src="/src/assets/img/icons/exclamation_mark.svg" class="icon--exclamation-mark">
 </div>
 ```
 
@@ -19,9 +21,9 @@ var injectSvg = require('gulp-inject-svg');
 
 gulp.task('injectSvg', function() {
 
-  return gulp.src('assets/**/*.html')
+  return gulp.src('/src/**/*.html')
     .pipe(injectSvg())
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('public/'));
 
 });
 
