@@ -7,13 +7,14 @@ This gulp plugin will check all img tags with an external svg and replace the ta
 
 ## Usage
 
-NOTE: You currently need to use an absolute path to your svg
-
 ```html
 <div class="icon">
   <img src="/src/assets/img/icons/exclamation_mark.svg" class="icon--exclamation-mark">
 </div>
 ```
+
+NOTE: You currently need to use an absolute path (relative to your project) to your svgs.
+
 
 ```javascript
 var gulp = require('gulp');
