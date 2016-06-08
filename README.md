@@ -14,6 +14,7 @@ This gulp plugin will check all img tags with an external svg and replace the ta
 ```
 
 ```javascript
+var gulp = require('gulp');
 var injectSvg = require('gulp-inject-svg');
 
 gulp.task('injectSvg', function() {
