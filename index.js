@@ -13,14 +13,12 @@ module.exports = function(filePath) {
 
         if(markup.indexOf('�') > -1){
             markup = iconv.decode(file.contents, 'gbk');
-            markupUtf8 = iconv.encode(markup, 'utf-8');
-        }else {
-          markupUtf8 = markup;
+            markup = iconv.encode(markup, 'utf-8');
         }
 
-        var dom = cheerio.load(markupUtf8, { decodeEntities: false });
+        var dom = cheerio.load(markup, { decodeEntities: false });
         injectSvg(dom);
-        file.contents = iconv.encode(dom.html(), 'gbk');
+        file.contents = iconv.encode(dom.html(), 'utf-8');
         return callback(null, file);
     };
 
@@ -29,7 +27,7 @@ module.exports = function(filePath) {
     function injectSvg(dom) {
 
         // Regexp for checking if the file ending has .svg
-        var testSvg = /(?!.*[.](?:svg)$).*/;
+        var testSvg = /^.*.(svg)$/i;
 
         dom('img').each(function(idx, el) {
             el = dom(el)
