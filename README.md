@@ -2,8 +2,6 @@
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-===========
-
 ## Information
 
 This gulp plugin will check all img tags with an external svg and replace the tag with inline svg.
