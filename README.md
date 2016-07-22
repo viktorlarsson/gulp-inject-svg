@@ -6,7 +6,7 @@ gulp-inject-svg [![experimental](http://badges.github.io/stability-badges/dist/e
 
 This gulp plugin will check all img tags with an external svg and replace the tag with inline svg.
 
-[![NPM](https://nodei.co/npm/gulp-inject-svg.png)](https://nodei.co/npm/gulp-inject-svg/)
+[![NPM](https://nodei.co/npm/gulp-inject-svg.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/gulp-inject-svg/)
 
 ## Usage
 
