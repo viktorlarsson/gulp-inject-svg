@@ -43,12 +43,18 @@ module.exports = function(filePath) {
 
                   var inlineTag = fs.readFileSync("." + src).toString();
                   var className = el.attr('class');
+                  var styles = el.attr('style');
 
                   svg = dom(inlineTag);
 
                   if(className !== undefined) {
                     svg.addClass(className);
                   }
+
+                  if(styles !== undefined) {
+                    svg.attr('style', styles);
+                  }
+
 
                 } catch (e) {
 
