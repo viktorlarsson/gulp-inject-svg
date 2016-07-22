@@ -4,7 +4,7 @@
   "description": "replaces external svg with inline svg",
   "main": "index.js",
   "author": "Viktor Sarström",
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "dependencies": {
     "cheerio": "latest",
     "event-stream": "latest",
