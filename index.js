@@ -41,7 +41,7 @@ module.exports = function(filePath) {
 
                 try {
 
-                  var inlineTag = fs.readFileSync("." + src).toString();
+                  var inlineTag = fs.readFileSync("./" + src).toString();
                   var className = el.attr('class');
                   var styles = el.attr('style');
 
