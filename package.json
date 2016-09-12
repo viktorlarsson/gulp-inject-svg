@@ -1,6 +1,6 @@
 {
   "name": "gulp-inject-svg",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "replaces external svg with inline svg",
   "main": "index.js",
   "author": "Viktor Sarström",
