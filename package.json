@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/viktorlarsson/gulp-inject-svg/issues"
   },
-  "homepage": "https://github.com/viktorlarsson/gulp-inject-svg"
+  "homepage": "https://github.com/viktorlarsson/gulp-inject-svg",
+  "devDependencies": {
+    "gulp-util": "^3.0.7"
+  }
 }
