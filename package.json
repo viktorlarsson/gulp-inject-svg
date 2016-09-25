@@ -8,7 +8,8 @@
   "dependencies": {
     "cheerio": "latest",
     "event-stream": "latest",
-    "iconv-lite": "latest"
+    "iconv-lite": "latest",
+    "gulp-util": "^3.0.7"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,5 @@
   "bugs": {
     "url": "https://github.com/viktorlarsson/gulp-inject-svg/issues"
   },
-  "homepage": "https://github.com/viktorlarsson/gulp-inject-svg",
-  "devDependencies": {
-    "gulp-util": "^3.0.7"
-  }
+  "homepage": "https://github.com/viktorlarsson/gulp-inject-svg"
 }
