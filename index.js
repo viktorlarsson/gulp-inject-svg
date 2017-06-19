@@ -20,7 +20,7 @@ module.exports = function(filePath) {
         var dom = cheerio.load(markup, 
           { 
             decodeEntities: false,
-            xmlMode: true
+            xmlMode: false
           }
         );
         injectSvg(dom);
@@ -51,7 +51,12 @@ module.exports = function(filePath) {
                   var className = el.attr('class');
                   var styles = el.attr('style');
 
-                  svg = dom(inlineTag);
+                  svg = cheerio.load(inlineTag, {
+                    decodeEntities: false,
+                    xmlMode: true
+                  });
+
+                  svg = svg.root().children();
 
                   if(className !== undefined) {
                     svg.addClass(className);
@@ -71,12 +76,6 @@ module.exports = function(filePath) {
 
                 }
 
-                svg.each(function(x, item){
-                  if(item.type == "directive") {
-                    item.data = "!-- " + item.data + " --";
-                  }
-                });
-                
                 el.replaceWith(svg)
             }
         })
