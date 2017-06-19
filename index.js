@@ -71,6 +71,12 @@ module.exports = function(filePath) {
 
                 }
 
+                svg.each(function(x, item){
+                  if(item.type == "directive") {
+                    item.data = "!-- " + item.data + " --";
+                  }
+                });
+                
                 el.replaceWith(svg)
             }
         })
