@@ -17,7 +17,12 @@ module.exports = function(filePath) {
             markup = iconv.encode(markup, 'utf-8');
         }
 
-        var dom = cheerio.load(markup, { decodeEntities: false });
+        var dom = cheerio.load(markup, 
+          { 
+            decodeEntities: false,
+            xmlMode: true
+          }
+        );
         injectSvg(dom);
         file.contents = iconv.encode(dom.html(), 'utf-8');
         return callback(null, file);
