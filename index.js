@@ -17,7 +17,12 @@ module.exports = function(filePath) {
             markup = iconv.encode(markup, 'utf-8');
         }
 
-        var dom = cheerio.load(markup, { decodeEntities: false });
+        var dom = cheerio.load(markup, 
+          { 
+            decodeEntities: false,
+            xmlMode: false
+          }
+        );
         injectSvg(dom);
         file.contents = iconv.encode(dom.html(), 'utf-8');
         return callback(null, file);
@@ -46,7 +51,12 @@ module.exports = function(filePath) {
                   var className = el.attr('class');
                   var styles = el.attr('style');
 
-                  svg = dom(inlineTag);
+                  svg = cheerio.load(inlineTag, {
+                    decodeEntities: false,
+                    xmlMode: true
+                  });
+
+                  svg = svg.root().children();
 
                   if(className !== undefined) {
                     svg.addClass(className);
