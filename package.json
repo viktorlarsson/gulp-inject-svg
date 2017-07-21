@@ -6,7 +6,7 @@
   "author": "Viktor Sarström",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "cheerio": "latest",
+    "cheerio": "^0.22.0",
     "event-stream": "latest",
     "iconv-lite": "latest",
     "gulp-util": "^3.0.7"
