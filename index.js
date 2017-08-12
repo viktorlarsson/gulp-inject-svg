@@ -20,7 +20,8 @@ module.exports = function(filePath) {
         var dom = cheerio.load(markup, 
           { 
             decodeEntities: false,
-            xmlMode: false
+            xmlMode: false,
+            lowerCaseAttributeNames: false
           }
         );
         injectSvg(dom);
