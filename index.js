@@ -17,8 +17,8 @@ module.exports = function(filePath) {
             markup = iconv.encode(markup, 'utf-8');
         }
 
-        var dom = cheerio.load(markup, 
-          { 
+        var dom = cheerio.load(markup,
+          {
             decodeEntities: false,
             xmlMode: false,
             lowerCaseAttributeNames: false
@@ -70,10 +70,10 @@ module.exports = function(filePath) {
 
                 } catch (e) {
 
-									throw new gutil.PluginError({
-									  plugin: 'gulp-inject-svg',
-									  message: 'Could not find file SVG file (' + src + ').'
-									});
+                  throw new gutil.PluginError({
+                    plugin: 'gulp-inject-svg',
+                    message: 'Could not find file SVG file (' + src + ').'
+                  });
 
                 }
 
