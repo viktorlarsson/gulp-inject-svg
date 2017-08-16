@@ -12,21 +12,31 @@ This gulp plugin will check all img tags with an external svg and replace the ta
 
 ```html
 <div class="icon">
-  <img src="/src/assets/img/icons/exclamation_mark.svg" class="icon--exclamation-mark">
+  <img src="/assets/img/icons/exclamation_mark.svg" class="icon--exclamation-mark">
 </div>
 ```
 
-NOTE: You currently need to use an absolute path (relative to your project) to your svgs.
+#### Note
 
+You either need to use an absolute path relative to your project root
+
+`/src/assets/img/icons/exclamation_mark.svg`
+
+or pass a configuration object to the plugin
+
+`injectSvg({ base: '/src' })`
+
+#### Example
 
 ```javascript
 var gulp = require('gulp');
 var injectSvg = require('gulp-inject-svg');
+var injectSvgOptions = { base: '/src' };
 
 gulp.task('injectSvg', function() {
 
   return gulp.src('/src/**/*.html')
-    .pipe(injectSvg())
+    .pipe(injectSvg(injectSvgOptions))
     .pipe(gulp.dest('public/'));
 
 });
