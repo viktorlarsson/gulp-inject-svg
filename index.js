@@ -6,7 +6,7 @@ var es = require('event-stream');
 var iconv = require('iconv-lite');
 var gutil = require('gulp-util');
 
-module.exports = function(filePath) {
+module.exports = function(settings) {
 
     var go = function(file, callback) {
 
@@ -17,8 +17,8 @@ module.exports = function(filePath) {
             markup = iconv.encode(markup, 'utf-8');
         }
 
-        var dom = cheerio.load(markup, 
-          { 
+        var dom = cheerio.load(markup,
+          {
             decodeEntities: false,
             xmlMode: false,
             lowerCaseAttributeNames: false
@@ -39,6 +39,7 @@ module.exports = function(filePath) {
         dom('img').each(function(idx, el) {
             el = dom(el)
             var src = el.attr('src');
+            settings && settings.base ? src = settings.base + src : null;
 
             if (testSvg.test(src) && isLocal(src)) {
 
@@ -47,8 +48,7 @@ module.exports = function(filePath) {
                 var svg;
 
                 try {
-
-                  var inlineTag = fs.readFileSync("./" + src).toString();
+                  var inlineTag = fs.readFileSync('./' + src).toString();
                   var className = el.attr('class');
                   var styles = el.attr('style');
 
@@ -70,10 +70,10 @@ module.exports = function(filePath) {
 
                 } catch (e) {
 
-									throw new gutil.PluginError({
-									  plugin: 'gulp-inject-svg',
-									  message: 'Could not find file SVG file (' + src + ').'
-									});
+                  throw new gutil.PluginError({
+                    plugin: 'gulp-inject-svg',
+                    message: 'Could not find file SVG file (' + src + ').'
+                  });
 
                 }
 
