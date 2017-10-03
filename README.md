@@ -31,7 +31,7 @@ or pass a configuration object to the plugin
 You can prevent some SVG files from inject by the attribute `data-skip-inject-svg`
 
 ```html
-<img src="/assets/img/icons/exclamation_mark.svg" data-skip-inject-svg="1" class="icon--exclamation-mark">
+<img src="/assets/img/icons/exclamation_mark.svg" data-skip-inject-svg class="icon--exclamation-mark">
 ```
 
 #### Example
