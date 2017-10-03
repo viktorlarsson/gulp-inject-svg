@@ -39,6 +39,12 @@ module.exports = function(settings) {
         dom('img').each(function(idx, el) {
             el = dom(el)
             var src = el.attr('src');
+
+            if (el.attr('data-skip-inject-svg')) {
+              el.removeAttr('data-skip-inject-svg');
+              return;
+            }
+
             settings && settings.base ? src = settings.base + src : null;
 
             if (testSvg.test(src) && isLocal(src)) {
