@@ -56,6 +56,7 @@ module.exports = function(settings) {
                 try {
                   var inlineTag = fs.readFileSync('./' + src).toString();
                   var className = el.attr('class');
+                  var idName = el.attr('id');
                   var styles = el.attr('style');
 
                   svg = cheerio.load(inlineTag, {
@@ -67,6 +68,10 @@ module.exports = function(settings) {
 
                   if(className !== undefined) {
                     svg.addClass(className);
+                  }
+
+                  if(idName !== undefined) {
+                    svg.attr('id', idName);
                   }
 
                   if(styles !== undefined) {
