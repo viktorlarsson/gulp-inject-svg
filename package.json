@@ -1,14 +1,15 @@
 {
   "name": "gulp-inject-svg",
-  "version": "0.1.4",
+  "version": "0.1.16",
   "description": "replaces external svg with inline svg",
   "main": "index.js",
   "author": "Viktor Sarström",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "cheerio": "latest",
+    "cheerio": "^0.22.0",
     "event-stream": "latest",
-    "iconv-lite": "latest"
+    "iconv-lite": "latest",
+    "gulp-util": "^3.0.7"
   },
   "repository": {
     "type": "git",

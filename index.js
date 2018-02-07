@@ -4,8 +4,9 @@ var fs = require('fs');
 var url = require('url');
 var es = require('event-stream');
 var iconv = require('iconv-lite');
+var gutil = require('gulp-util');
 
-module.exports = function(filePath) {
+module.exports = function(settings) {
 
     var go = function(file, callback) {
 
@@ -16,7 +17,13 @@ module.exports = function(filePath) {
             markup = iconv.encode(markup, 'utf-8');
         }
 
-        var dom = cheerio.load(markup, { decodeEntities: false });
+        var dom = cheerio.load(markup,
+          {
+            decodeEntities: false,
+            xmlMode: false,
+            lowerCaseAttributeNames: false
+          }
+        );
         injectSvg(dom);
         file.contents = iconv.encode(dom.html(), 'utf-8');
         return callback(null, file);
@@ -33,6 +40,13 @@ module.exports = function(filePath) {
             el = dom(el)
             var src = el.attr('src');
 
+            if (el.attr('data-skip-inject-svg')) {
+              el.removeAttr('data-skip-inject-svg');
+              return;
+            }
+
+            settings && settings.base ? src = settings.base + src : null;
+
             if (testSvg.test(src) && isLocal(src)) {
 
                 var dir = path.dirname(src);
@@ -40,15 +54,24 @@ module.exports = function(filePath) {
                 var svg;
 
                 try {
-
-                  var inlineTag = fs.readFileSync("." + src).toString();
+                  var inlineTag = fs.readFileSync('./' + src).toString();
                   var className = el.attr('class');
+                  var idName = el.attr('id');
                   var styles = el.attr('style');
 
-                  svg = dom(inlineTag);
+                  svg = cheerio.load(inlineTag, {
+                    decodeEntities: false,
+                    xmlMode: true
+                  });
+
+                  svg = svg.root().children();
 
                   if(className !== undefined) {
                     svg.addClass(className);
+                  }
+
+                  if(idName !== undefined) {
+                    svg.attr('id', idName);
                   }
 
                   if(styles !== undefined) {
@@ -58,7 +81,10 @@ module.exports = function(filePath) {
 
                 } catch (e) {
 
-                  svg = "<!-- File "+ src + " was not found by gulp-inject-svg  -->";
+                  throw new gutil.PluginError({
+                    plugin: 'gulp-inject-svg',
+                    message: 'Could not find file SVG file (' + src + ').'
+                  });
 
                 }
 
