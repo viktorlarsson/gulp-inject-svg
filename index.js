@@ -58,6 +58,8 @@ module.exports = function(settings) {
                   var className = el.attr('class');
                   var idName = el.attr('id');
                   var styles = el.attr('style');
+                  var widthEl = el.attr('width');
+                  var heightEl = el.attr('height');
 
                   svg = cheerio.load(inlineTag, {
                     decodeEntities: false,
@@ -76,6 +78,14 @@ module.exports = function(settings) {
 
                   if(styles !== undefined) {
                     svg.attr('style', styles);
+                  }
+
+                  if(widthEl !== undefined) {
+                    svg.attr('width', widthEl);
+                  }
+
+                  if(heightEl !== undefined) {
+                    svg.attr('height', heightEl);
                   }
 
 
