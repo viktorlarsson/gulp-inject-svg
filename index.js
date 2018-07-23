@@ -41,7 +41,7 @@ module.exports = function(settings) {
             var src = el.attr('src');
 
             if (el.attr('data-skip-inject-svg')) {
-              el.removeAttr('data-skip-inject-svg');
+              //el.removeAttr('data-skip-inject-svg');
               return;
             }
 
@@ -77,10 +77,23 @@ module.exports = function(settings) {
 
                 } catch (e) {
 
-                  throw new gutil.PluginError({
-                    plugin: 'gulp-inject-svg',
-                    message: 'Could not find file SVG file (' + src + ').'
-                  });
+
+                    if (!el.attr('data-skip-inject-svg')) {
+
+                        console.error('Could not find file SVG file (' + src + ').');
+
+                        //throw new gutil.PluginError({
+                          //  plugin: 'gulp-inject-svg',
+                            //message: 'Could not find file SVG file (' + src + ').'
+                        //});
+                        return;
+                    }else {
+
+                        console.log ("Bypassing for Dynamic SVG " +src);
+                        return
+                    }
+
+
 
                 }
 
