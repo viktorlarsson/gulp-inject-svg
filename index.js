@@ -7,6 +7,12 @@ var iconv = require('iconv-lite');
 var gutil = require('gulp-util');
 module.exports = function (settings) {
     var go = function (file, callback) {
+        
+         if (file.contents === null) {
+             console.log ('SKIPPING NULL FILE SVG INJECTION');
+            return callback(null, file);
+        }
+        
         var markup = iconv.decode(file.contents, 'utf-8');
         if (markup.indexOf('�') > -1) {
             markup = iconv.decode(file.contents, 'gbk');
