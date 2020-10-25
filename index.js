@@ -4,7 +4,7 @@ var fs = require('fs');
 var url = require('url');
 var es = require('event-stream');
 var iconv = require('iconv-lite');
-var gutil = require('gulp-util');
+var PluginError = require('plugin-error');
 
 module.exports = function(settings) {
 
@@ -77,7 +77,7 @@ module.exports = function(settings) {
 
                 } catch (e) {
 
-                  throw new gutil.PluginError({
+                  throw new PluginError({
                     plugin: 'gulp-inject-svg',
                     message: 'Could not find file SVG file (' + src + ').'
                   });
