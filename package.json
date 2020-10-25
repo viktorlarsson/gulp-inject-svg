@@ -9,7 +9,7 @@
     "cheerio": "^0.22.0",
     "event-stream": "latest",
     "iconv-lite": "latest",
-    "gulp-util": "^3.0.7"
+    "plugin-error": "^1.0.1"
   },
   "repository": {
     "type": "git",
